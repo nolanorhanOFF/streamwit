@@ -34,6 +34,16 @@
             border-radius: 5px;
             margin-top: 10px;
         }
+        .key {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            padding: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -42,6 +52,10 @@
         <video id="video" autoplay playsinline></video>
         <br>
         <button onclick="startStreaming()">Démarrer le Stream</button>
+        <h2>Votre Clé de Stream OBS</h2>
+        <div class="key" id="streamKey">Cliquez pour générer</div>
+        <br>
+        <button onclick="generateStreamKey()">Générer une nouvelle clé</button>
     </div>
 
     <script>
@@ -53,6 +67,11 @@
                 console.error("Erreur de capture du flux: ", error);
                 alert("Impossible d'accéder à la caméra/microphone");
             }
+        }
+
+        function generateStreamKey() {
+            const key = 'sk-' + Math.random().toString(36).substr(2, 16);
+            document.getElementById('streamKey').textContent = key;
         }
     </script>
 </body>
